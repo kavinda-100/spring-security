@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-security
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_security
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      open-in-view: false
+
+      properties:
+        hibernate:
+          format_sql: true
+
+    sql:
+      init:
+        mode: never

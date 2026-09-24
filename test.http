@@ -1,0 +1,25 @@
+### Home route
+GET http://localhost:8080/
+
+### Register user
+POST http://localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "name": "Kavinda",
+  "email": "kavinda@example.com",
+  "password": "password123"
+}
+
+### Me without authentication
+GET http://localhost:8080/api/v1/auth/me
+
+### Me with correct credentials
+GET http://localhost:8080/api/v1/auth/me
+Authorization: Basic kavinda@example.com password123
+
+### Me with wrong password
+GET http://localhost:8080/api/v1/auth/me
+Authorization: Basic kavinda@example.com wrongpassword
+
+###
