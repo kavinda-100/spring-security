@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -35,18 +34,11 @@ public class AuthController {
         Map<String, Object> userDetails = Map.of(
                 "id", user.getId(),
                 "username", user.getUsername(),
-                "email", user.getUsername(),
-                "enabled", user.isEnabled()
+                "email", user.getUsername(), // username is email in this case
+                "enabled", user.isEnabled(),
+                "authorities", user.getAuthorities()
         );
 
-        return ResponseEntity.ok(
-                Map.of(
-                        "username", authentication.getName(),
-                        "authenticated", authentication.isAuthenticated(),
-                        "authorities", authentication.getAuthorities(),
-                        "principalType", Objects.requireNonNull(authentication.getPrincipal()).getClass().getSimpleName(),
-                        "userDetails", userDetails
-                )
-        );
+        return ResponseEntity.ok(userDetails);
     }
 }
