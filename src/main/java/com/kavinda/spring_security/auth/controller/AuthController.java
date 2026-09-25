@@ -1,9 +1,14 @@
 package com.kavinda.spring_security.auth.controller;
 
+import com.kavinda.spring_security.auth.dto.LoginRequest;
+import com.kavinda.spring_security.auth.dto.LoginResponse;
 import com.kavinda.spring_security.auth.dto.RegisterRequest;
 import com.kavinda.spring_security.auth.dto.RegisterResponse;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.auth.service.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,6 +32,12 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
+        var loginResponse = authService.login(loginRequest, request, response);
+        return ResponseEntity.ok(loginResponse);
+    }
+
     @GetMapping("/me")
     public ResponseEntity<Map<String, Object>> me(Authentication authentication) {
         CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
@@ -41,4 +52,17 @@ public class AuthController {
 
         return ResponseEntity.ok(userDetails);
     }
+
+    @GetMapping("/session")
+    public ResponseEntity<Map<String, Object>> session(HttpServletRequest request, Authentication authentication) {
+        HttpSession session = request.getSession(false);
+
+        return ResponseEntity.ok(Map.of(
+                "sessionId", session.getId(),
+                "username", authentication.getName(),
+                "authorities", authentication.getAuthorities()
+        ));
+    }
+
+
 }
