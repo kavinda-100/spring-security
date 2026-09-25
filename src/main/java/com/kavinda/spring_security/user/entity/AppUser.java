@@ -1,9 +1,12 @@
 package com.kavinda.spring_security.user.entity;
 
+import com.kavinda.spring_security.role.entity.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -38,6 +41,14 @@ public class AppUser {
 
     @Column(nullable = false)
     private boolean enabled = true;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
     @Column(
             name = "created_at",
