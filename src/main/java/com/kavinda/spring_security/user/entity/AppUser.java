@@ -75,4 +75,11 @@ public class AppUser {
     void onUpdate() {
         updatedAt = Instant.now();
     }
+
+    // --- Custom Methods ---
+
+    public void replaceRoles(Set<Role> roles) {
+        this.roles.clear();
+        this.roles.addAll(roles);
+    }
 }
