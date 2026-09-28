@@ -5,8 +5,8 @@ import com.kavinda.spring_security.auth.dto.LoginResponse;
 import com.kavinda.spring_security.auth.dto.RegisterRequest;
 import com.kavinda.spring_security.auth.dto.RegisterResponse;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
+import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
-import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.repository.RoleRepository;
 import com.kavinda.spring_security.user.entity.AppUser;
@@ -50,7 +50,7 @@ public class AuthService {
 
         Role userRole = roleRepository
                 .findByName("USER")
-                .orElseThrow(() -> new ResourceNotFoundException("Default USER role does not exist"));
+                .orElseThrow(() -> new InternalServerErrorException("Default USER role does not exist"));
 
         String passwordHash = passwordEncoder.encode(request.password());
 
