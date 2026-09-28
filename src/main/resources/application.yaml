@@ -28,9 +28,11 @@ spring:
 
   session:
     timeout: 30m
+    data:
+      redis:
+        repository-type: indexed
+        namespace: spring:session:spring-security
 
-    redis:
-      namespace: spring:session:spring-security
 
   sql:
     init:
