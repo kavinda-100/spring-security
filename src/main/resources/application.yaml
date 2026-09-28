@@ -21,6 +21,17 @@ spring:
         jdbc:
           time_zone: UTC
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  session:
+    timeout: 30m
+
+    redis:
+      namespace: spring:session:spring-security
+
   sql:
     init:
       mode: never
