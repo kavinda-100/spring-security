@@ -1,6 +1,7 @@
 package com.kavinda.spring_security.exceptions;
 
 import com.kavinda.spring_security.exceptions.types.ForbiddenOperationException;
+import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
 import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ public class GlobalExceptionHandler {
 
     // Handles ResourceNotFoundException
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
+    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
@@ -29,7 +30,7 @@ public class GlobalExceptionHandler {
 
     // Handles ResourceConflictException
     @ExceptionHandler(ResourceConflictException.class)
-    public ResponseEntity<ErrorResponse> handleResourceConflict(ResourceConflictException ex) {
+    public ResponseEntity<ErrorResponse> handleResourceConflictException(ResourceConflictException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
                 HttpStatus.CONFLICT.getReasonPhrase(),
@@ -41,7 +42,7 @@ public class GlobalExceptionHandler {
 
     // Handles ForbiddenOperationException
     @ExceptionHandler(ForbiddenOperationException.class)
-    public ResponseEntity<ErrorResponse> handleForbiddenOperation(ForbiddenOperationException exception) {
+    public ResponseEntity<ErrorResponse> handleForbiddenOperationException(ForbiddenOperationException exception) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.FORBIDDEN.value(),
                 HttpStatus.FORBIDDEN.getReasonPhrase(),
@@ -52,7 +53,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 
-    // ------------------------------- default exception handlers -------------------------------
+    // handler for Internal Server Error Exception
+    @ExceptionHandler(InternalServerErrorException.class)
+    public ResponseEntity<ErrorResponse> handleInternalServerException(InternalServerErrorException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                ex.getMessage(),
+                Instant.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
     // Validation error handler for @Valid annotation
     // Handles Validation errors (@Valid annotation use by Validation library)
@@ -73,17 +84,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    // Fallback handler for unexpected generic runtime errors
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorResponse> handleGeneralException(RuntimeException ex) {
-        ErrorResponse error = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                ex.getMessage(),
-                Instant.now()
-        );
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    // ------------------------------- default exception handlers -------------------------------
 
     // Fallback handler for unIllegalArgumentException errors
     @ExceptionHandler(IllegalArgumentException.class)
@@ -95,5 +96,17 @@ public class GlobalExceptionHandler {
                 Instant.now()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    // Fallback handler for unexpected generic runtime errors
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> handleGeneralException(RuntimeException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                ex.getMessage(),
+                Instant.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
