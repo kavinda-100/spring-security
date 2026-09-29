@@ -7,6 +7,7 @@ import com.kavinda.spring_security.permission.dto.UpdatePermissionRequest;
 import com.kavinda.spring_security.permission.service.PermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -23,6 +24,7 @@ public class PermissionController {
     ///
     /// @param request The request body containing the details of the new permission to be created.
     /// @return A ResponseEntity containing a success message if the permission is created successfully.
+    @PreAuthorize("hasRole('SUPER_ADMIN') and hasAuthority('permission:create')")
     @PostMapping
     public ResponseEntity<String> createNewPermission(@RequestBody CreateNewPermission request) {
         permissionService.createNewPermission(request);
@@ -32,6 +34,7 @@ public class PermissionController {
     /// Retrieves all permissions available in the system.
     ///
     /// @return A ResponseEntity containing a set of GetAllPermissionsRequest objects representing all permissions.
+    @PreAuthorize("hasRole('SUPER_ADMIN') and hasAuthority('permission:read')")
     @GetMapping
     public ResponseEntity<Set<GetAllPermissionsRequest>> getAllPermissions() {
         return ResponseEntity.ok(permissionService.getAllPermissions());
@@ -41,6 +44,7 @@ public class PermissionController {
     ///
     /// @param permissionId The unique identifier of the permission to be retrieved.
     /// @return A ResponseEntity containing the GetPermissionRequest object representing the requested permission.
+    @PreAuthorize("hasRole('SUPER_ADMIN') and hasAuthority('permission:read')")
     @GetMapping("/{permissionId}")
     public ResponseEntity<GetPermissionRequest> getPermissionById(@PathVariable UUID permissionId) {
         return ResponseEntity.ok(permissionService.getPermissionById(permissionId));
@@ -51,6 +55,7 @@ public class PermissionController {
     /// @param roleId        The unique identifier of the role whose permissions are to be updated.
     /// @param permissionIds The request body containing the list of permission IDs to be associated with the role.
     /// @return A ResponseEntity containing a success message if the role permissions are updated successfully.
+    @PreAuthorize("hasRole('SUPER_ADMIN') and hasAuthority('permission:assign')")
     @PatchMapping("/{roleId}/assign-permissions")
     public ResponseEntity<String> addPermissionsToRole(@PathVariable UUID roleId, @RequestBody UpdatePermissionRequest permissionIds) {
         permissionService.assignPermissionsToRole(roleId, permissionIds.permissionIds());
@@ -61,6 +66,7 @@ public class PermissionController {
     ///
     /// @param permissionId The unique identifier of the permission to be deleted.
     /// @return A ResponseEntity with no content if the permission is deleted successfully.
+    @PreAuthorize("hasRole('SUPER_ADMIN') and hasAuthority('permission:delete')")
     @DeleteMapping("/{permissionId}")
     public ResponseEntity<String> deletePermission(@PathVariable UUID permissionId) {
         permissionService.deletePermission(permissionId);

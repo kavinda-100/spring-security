@@ -5,6 +5,7 @@ import com.kavinda.spring_security.auth.dto.LoginResponse;
 import com.kavinda.spring_security.auth.dto.RegisterRequest;
 import com.kavinda.spring_security.auth.dto.RegisterResponse;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
+import com.kavinda.spring_security.config.properties.YMLSecurityProperties;
 import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
 import com.kavinda.spring_security.role.entity.Role;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,10 +27,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthService {
 
     private final UserRepository userRepository;
@@ -36,6 +39,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository;
+    private final YMLSecurityProperties ymlSecurityProperties;
 
 
     /// Registers a new user with the provided registration request.
@@ -63,8 +67,19 @@ public class AuthService {
                 .email(email)
                 .passwordHash(passwordHash)
                 .enabled(true)
-                .roles(Set.of(userRole))
+                .roles(new HashSet<>())
                 .build();
+
+        user.addRole(userRole);
+
+        if (isBootstrapSuperAdmin(email)) {
+
+            Role superAdminRole = roleRepository
+                    .findByName("SUPER_ADMIN")
+                    .orElseThrow(() -> new InternalServerErrorException("SUPER_ADMIN role does not exist"));
+
+            user.addRole(superAdminRole);
+        }
 
         AppUser savedUser = userRepository.save(user);
 
@@ -107,5 +122,21 @@ public class AuthService {
                 user.getUsername(),
                 authorities
         );
+    }
+
+    // --------------- helper methods ---------------
+
+    /// Checks if the provided email matches the configured super admin email in the application properties.
+    ///
+    /// @param email The email to check against the configured super admin email.
+    /// @return True if the email matches the configured super admin email, false otherwise.
+    private boolean isBootstrapSuperAdmin(String email) {
+        String configuredEmail = ymlSecurityProperties.superAdminEmail();
+
+        if (configuredEmail == null || configuredEmail.isBlank()) {
+            return false;
+        }
+
+        return email.equalsIgnoreCase(configuredEmail.trim());
     }
 }

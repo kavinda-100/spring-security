@@ -37,3 +37,8 @@ spring:
   sql:
     init:
       mode: never
+
+
+app:
+  security:
+    super-admin-email: "kavinda@example.com"
