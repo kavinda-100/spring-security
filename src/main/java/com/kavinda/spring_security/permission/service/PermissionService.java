@@ -28,6 +28,9 @@ public class PermissionService {
     private final PermissionRepository permissionRepository;
     private final ApplicationEventPublisher eventPublisher;
 
+    /// Creates a new permission.
+    ///
+    /// @param request The request object containing the name of the new permission.
     public void createNewPermission(CreateNewPermission request) {
 
         Optional<Permission> existingPermission = permissionRepository.findByName(request.name());
@@ -42,6 +45,9 @@ public class PermissionService {
         permissionRepository.save(permission);
     }
 
+    /// Retrieves all permissions.
+    ///
+    /// @return A set of GetAllPermissionsRequest objects representing all permissions.
     public Set<GetAllPermissionsRequest> getAllPermissions() {
         return permissionRepository.findAll()
                 .stream()
@@ -49,6 +55,10 @@ public class PermissionService {
                 .collect(Collectors.toSet());
     }
 
+    /// Retrieves a permission by its ID.
+    ///
+    /// @param permissionId The UUID of the permission to retrieve.
+    /// @return A GetPermissionRequest object representing the permission.
     public GetPermissionRequest getPermissionById(UUID permissionId) {
         Permission permission = permissionRepository.findById(permissionId)
                 .orElseThrow(
@@ -58,6 +68,10 @@ public class PermissionService {
         return new GetPermissionRequest(permission.getId(), permission.getName(), permission.getCreatedAt(), permission.getUpdatedAt());
     }
 
+    /// Updates the permissions associated with a role.
+    ///
+    /// @param roleId        The UUID of the role to update.
+    /// @param permissionIds A set of UUIDs representing the permissions to associate with the role.
     @Transactional
     public void updateRolePermissions(UUID roleId, Set<UUID> permissionIds) {
         Role role = roleRepository.findById(roleId)
@@ -77,6 +91,9 @@ public class PermissionService {
         eventPublisher.publishEvent(new RolePermissionsChangedEvent(affectedUserIds));
     }
 
+    /// Deletes a permission by its ID.
+    ///
+    /// @param permissionId The UUID of the permission to delete.
     @Transactional
     public void deletePermission(UUID permissionId) {
 

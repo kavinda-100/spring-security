@@ -17,12 +17,20 @@ public class RoleController {
 
     private final RoleService roleService;
 
+    /// Get all roles
+    ///
+    /// @return A ResponseEntity containing a set of GetAllRolesRequest objects representing all roles.
     @GetMapping
     public ResponseEntity<Set<GetAllRolesRequest>> getAllRoles() {
         var roles = roleService.getAllRoles();
         return ResponseEntity.ok(roles);
     }
 
+    /// Add new roles to a user
+    ///
+    /// @param userId  The UUID of the user whose roles are to be added.
+    /// @param request An UpdateUserRolesRequest object containing the new role IDs to be assigned to the user.
+    /// @return A ResponseEntity containing a success message indicating that the user roles have been updated successfully.
     @PatchMapping("/{userId}/add-roles")
     public ResponseEntity<String> updateUserRoles(@PathVariable UUID userId, @RequestBody UpdateUserRolesRequest request) {
         roleService.updateRoles(userId, request.roleIds());
