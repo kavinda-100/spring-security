@@ -42,9 +42,9 @@ public class RoleController {
     /// @param userId  The UUID of the user whose roles are to be added.
     /// @param request An UpdateUserRolesRequest object containing the new role IDs to be assigned to the user.
     /// @return A ResponseEntity containing a success message indicating that the user roles have been updated successfully.
-    @PatchMapping("/{userId}/add-roles")
-    public ResponseEntity<String> updateUserRoles(@PathVariable UUID userId, @RequestBody UpdateUserRolesRequest request) {
-        roleService.updateRoles(userId, request.roleIds());
+    @PatchMapping("/{userId}/assign-roles")
+    public ResponseEntity<String> assignRolesToUser(@PathVariable UUID userId, @RequestBody UpdateUserRolesRequest request) {
+        roleService.assignRolesToUser(userId, request.roleIds());
         return ResponseEntity.ok("User roles updated successfully.");
     }
 }

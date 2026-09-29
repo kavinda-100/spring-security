@@ -54,7 +54,7 @@ public class RoleService {
     /// @param userId  The UUID of the user whose roles are to be updated.
     /// @param roleIds The set of UUIDs representing the roles to be added to the user.
     @Transactional
-    public void updateRoles(UUID userId, Set<UUID> roleIds) {
+    public void assignRolesToUser(UUID userId, Set<UUID> roleIds) {
 
         AppUser user = userRepository.findById(userId)
                 .orElseThrow(

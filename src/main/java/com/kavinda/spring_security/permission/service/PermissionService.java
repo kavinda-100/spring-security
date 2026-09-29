@@ -68,12 +68,12 @@ public class PermissionService {
         return new GetPermissionRequest(permission.getId(), permission.getName(), permission.getCreatedAt(), permission.getUpdatedAt());
     }
 
-    /// Updates the permissions associated with a role.
+    /// add new permissions to a role.
     ///
     /// @param roleId        The UUID of the role to update.
-    /// @param permissionIds A set of UUIDs representing the permissions to associate with the role.
+    /// @param permissionIds A set of UUIDs representing the new permissions to associate with the role.
     @Transactional
-    public void updateRolePermissions(UUID roleId, Set<UUID> permissionIds) {
+    public void assignPermissionsToRole(UUID roleId, Set<UUID> permissionIds) {
         Role role = roleRepository.findById(roleId)
                 .orElseThrow(
                         () -> new ResourceNotFoundException("Role not found with id: " + roleId)
