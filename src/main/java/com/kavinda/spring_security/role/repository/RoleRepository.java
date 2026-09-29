@@ -18,7 +18,7 @@ public interface RoleRepository extends JpaRepository<Role, UUID> {
     @Query("""
                 select distinct r
                 from Role r
-                join fetch r.permissions p
+                join r.permissions p
                 where p.id = :permissionId
             """)
     List<Role> findAllByPermissionId(@Param("permissionId") UUID permissionId);

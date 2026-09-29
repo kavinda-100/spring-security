@@ -44,7 +44,9 @@ public class RoleService {
 
         Set<Role> roles = new HashSet<>(roleRepository.findAllById(roleIds));
 
-        user.replaceRoles(roles);
+        for (Role role : roles) {
+            user.addRole(role);
+        }
 
         userRepository.save(user);
 

@@ -67,7 +67,9 @@ public class PermissionService {
 
         Set<Permission> permissions = new HashSet<>(permissionRepository.findAllById(permissionIds));
 
-        role.replacePermissions(permissions);
+        for (Permission permission : permissions) {
+            role.addPermission(permission);
+        }
 
         // NOTE: this will become expensive if the number of users is large. optimization is needed if this becomes a bottleneck.
         List<UUID> affectedUserIds = userRepository.findUserIdsByRoleId(roleId);

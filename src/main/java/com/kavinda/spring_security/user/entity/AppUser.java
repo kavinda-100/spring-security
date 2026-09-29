@@ -82,4 +82,8 @@ public class AppUser {
         this.roles.clear();
         this.roles.addAll(roles);
     }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
 }

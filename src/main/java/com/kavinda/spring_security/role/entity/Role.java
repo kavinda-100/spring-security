@@ -65,6 +65,10 @@ public class Role {
         this.permissions.addAll(newPermissions);
     }
 
+    public void addPermission(Permission permission) {
+        permissions.add(permission);
+    }
+
     public void removePermission(Permission permission) {
         permissions.remove(permission);
     }
