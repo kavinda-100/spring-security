@@ -56,4 +56,13 @@ public interface UserRepository extends JpaRepository<AppUser, UUID> {
                 where p.id = :permissionId
             """)
     List<UUID> findUserIdsByPermissionId(@Param("permissionId") UUID permissionId);
+
+    //----
+    @Query("""
+                select distinct u
+                from AppUser u
+                join u.roles r
+                where r.id = :roleId
+            """)
+    List<AppUser> findAllByRoleId(@Param("roleId") UUID roleId);
 }

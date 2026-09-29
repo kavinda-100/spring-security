@@ -15,6 +15,8 @@ public interface RoleRepository extends JpaRepository<Role, UUID> {
 
     Optional<Role> findByName(String name);
 
+    boolean existsByName(String name);
+
     @Query("""
                 select distinct r
                 from Role r

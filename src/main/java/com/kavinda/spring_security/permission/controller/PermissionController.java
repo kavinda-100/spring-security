@@ -46,14 +46,14 @@ public class PermissionController {
         return ResponseEntity.ok(permissionService.getPermissionById(permissionId));
     }
 
-    /// Updates the permissions associated with a specific role.
+    /// add new permissions to a specific role.
     ///
     /// @param roleId        The unique identifier of the role whose permissions are to be updated.
     /// @param permissionIds The request body containing the list of permission IDs to be associated with the role.
     /// @return A ResponseEntity containing a success message if the role permissions are updated successfully.
-    @PatchMapping("/{roleId}/add-permissions")
-    public ResponseEntity<String> updateRolePermissions(@PathVariable UUID roleId, @RequestBody UpdatePermissionRequest permissionIds) {
-        permissionService.updateRolePermissions(roleId, permissionIds.permissionIds());
+    @PatchMapping("/{roleId}/assign-permissions")
+    public ResponseEntity<String> addPermissionsToRole(@PathVariable UUID roleId, @RequestBody UpdatePermissionRequest permissionIds) {
+        permissionService.assignPermissionsToRole(roleId, permissionIds.permissionIds());
         return ResponseEntity.ok("Role permissions updated successfully.");
     }
 

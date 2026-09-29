@@ -86,4 +86,8 @@ public class AppUser {
     public void addRole(Role role) {
         this.roles.add(role);
     }
+
+    public void removeRole(Role role) {
+        roles.remove(role);
+    }
 }
