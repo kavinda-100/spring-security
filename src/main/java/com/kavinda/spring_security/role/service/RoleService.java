@@ -19,11 +19,12 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UserRoleService {
+public class RoleService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final ApplicationEventPublisher eventPublisher;
+
 
     public Set<GetAllRolesRequest> getAllRoles() {
 
