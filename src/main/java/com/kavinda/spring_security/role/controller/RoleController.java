@@ -1,6 +1,7 @@
 package com.kavinda.spring_security.role.controller;
 
 import com.kavinda.spring_security.role.dto.GetAllRolesRequest;
+import com.kavinda.spring_security.role.dto.GetRoleRequest;
 import com.kavinda.spring_security.role.dto.UpdateUserRolesRequest;
 import com.kavinda.spring_security.role.service.RoleService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,16 @@ public class RoleController {
     public ResponseEntity<Set<GetAllRolesRequest>> getAllRoles() {
         var roles = roleService.getAllRoles();
         return ResponseEntity.ok(roles);
+    }
+
+    /// Get role by id
+    ///
+    /// @param roleId The UUID of the role to be retrieved.
+    /// @return A ResponseEntity containing a GetRoleRequest object representing the role.
+    @GetMapping("/{roleId}")
+    public ResponseEntity<GetRoleRequest> getRoleById(@PathVariable UUID roleId) {
+        var role = roleService.getRoleById(roleId);
+        return ResponseEntity.ok(role);
     }
 
     /// Add new roles to a user

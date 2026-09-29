@@ -2,6 +2,7 @@ package com.kavinda.spring_security.role.service;
 
 import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import com.kavinda.spring_security.role.dto.GetAllRolesRequest;
+import com.kavinda.spring_security.role.dto.GetRoleRequest;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.events.UserAuthorizationChangedEvent;
 import com.kavinda.spring_security.role.repository.RoleRepository;
@@ -35,6 +36,17 @@ public class RoleService {
                 .stream()
                 .map(role -> new GetAllRolesRequest(role.getId(), role.getName()))
                 .collect(Collectors.toSet());
+    }
+
+    /// Get role by id
+    ///
+    /// @param roleId The UUID of the role to be retrieved.
+    /// @return GetRoleRequest
+    public GetRoleRequest getRoleById(UUID roleId) {
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + roleId));
+
+        return new GetRoleRequest(role.getId(), role.getName(), role.getCreatedAt(), role.getUpdatedAt());
     }
 
     /// added roles for a user
