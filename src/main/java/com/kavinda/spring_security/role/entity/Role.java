@@ -58,4 +58,18 @@ public class Role {
     protected void onUpdate() {
         updatedAt = Instant.now();
     }
+
+    // ------ Custom methods for managing permissions ------
+    public void replacePermissions(Set<Permission> newPermissions) {
+        this.permissions.clear();
+        this.permissions.addAll(newPermissions);
+    }
+
+    public void addPermission(Permission permission) {
+        permissions.add(permission);
+    }
+
+    public void removePermission(Permission permission) {
+        permissions.remove(permission);
+    }
 }

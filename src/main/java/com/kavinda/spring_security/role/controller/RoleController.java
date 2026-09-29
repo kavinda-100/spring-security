@@ -2,7 +2,7 @@ package com.kavinda.spring_security.role.controller;
 
 import com.kavinda.spring_security.role.dto.GetAllRolesRequest;
 import com.kavinda.spring_security.role.dto.UpdateUserRolesRequest;
-import com.kavinda.spring_security.role.service.UserRoleService;
+import com.kavinda.spring_security.role.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +15,25 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RoleController {
 
-    private final UserRoleService userRoleService;
+    private final RoleService roleService;
 
+    /// Get all roles
+    ///
+    /// @return A ResponseEntity containing a set of GetAllRolesRequest objects representing all roles.
     @GetMapping
     public ResponseEntity<Set<GetAllRolesRequest>> getAllRoles() {
-        var roles = userRoleService.getAllRoles();
+        var roles = roleService.getAllRoles();
         return ResponseEntity.ok(roles);
     }
 
+    /// Add new roles to a user
+    ///
+    /// @param userId  The UUID of the user whose roles are to be added.
+    /// @param request An UpdateUserRolesRequest object containing the new role IDs to be assigned to the user.
+    /// @return A ResponseEntity containing a success message indicating that the user roles have been updated successfully.
     @PatchMapping("/{userId}/add-roles")
     public ResponseEntity<String> updateUserRoles(@PathVariable UUID userId, @RequestBody UpdateUserRolesRequest request) {
-        userRoleService.updateRoles(userId, request.roleIds());
+        roleService.updateRoles(userId, request.roleIds());
         return ResponseEntity.ok("User roles updated successfully.");
     }
 }

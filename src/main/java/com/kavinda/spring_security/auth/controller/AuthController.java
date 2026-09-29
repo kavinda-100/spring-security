@@ -25,6 +25,10 @@ public class AuthController {
 
     private final AuthService authService;
 
+    /// Register a new user
+    ///
+    /// @param request The registration request containing user details
+    /// @return A ResponseEntity containing the registration response and HTTP status code
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest request) {
         var response = authService.register(request);
@@ -32,12 +36,22 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    /// Login an existing user
+    ///
+    /// @param loginRequest The login request containing user credentials
+    /// @param request      The HttpServletRequest object for the current request
+    /// @param response     The HttpServletResponse object for the current response
+    /// @return A ResponseEntity containing the login response and HTTP status code
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         var loginResponse = authService.login(loginRequest, request, response);
         return ResponseEntity.ok(loginResponse);
     }
 
+    /// Get the details of the currently authenticated user
+    ///
+    /// @param authentication The Authentication object containing the details of the currently authenticated user
+    /// @return A ResponseEntity containing a map of user details and HTTP status code
     @GetMapping("/me")
     public ResponseEntity<Map<String, Object>> me(Authentication authentication) {
         CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
@@ -53,6 +67,11 @@ public class AuthController {
         return ResponseEntity.ok(userDetails);
     }
 
+    /// Get the current session details
+    ///
+    /// @param request        The HttpServletRequest object for the current request
+    /// @param authentication The Authentication object containing the details of the currently authenticated user
+    /// @return A ResponseEntity containing a map of session details and HTTP status code
     @GetMapping("/session")
     public ResponseEntity<Map<String, Object>> session(HttpServletRequest request, Authentication authentication) {
         HttpSession session = request.getSession(false);

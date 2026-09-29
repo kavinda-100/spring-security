@@ -38,6 +38,10 @@ public class AuthService {
     private final SecurityContextRepository securityContextRepository;
 
 
+    /// Registers a new user with the provided registration request.
+    ///
+    /// @param request The registration request containing user details.
+    /// @return A RegisterResponse containing the registered user's information.
     @Transactional
     public RegisterResponse register(RegisterRequest request) {
         String email = request.email().trim().toLowerCase();
@@ -71,6 +75,12 @@ public class AuthService {
         );
     }
 
+    /// Authenticates a user with the provided login request and sets the security context.
+    ///
+    /// @param loginRequest The login request containing user credentials.
+    /// @param request      The HttpServletRequest object for the current request.
+    /// @param response     The HttpServletResponse object for the current response.
+    /// @return A LoginResponse containing the authenticated user's information and authorities.
     public LoginResponse login(LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         Authentication unAuthenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.email(), loginRequest.password());
 
