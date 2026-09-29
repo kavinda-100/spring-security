@@ -41,4 +41,4 @@ spring:
 
 app:
   security:
-    super-admin-email: ${SUPER_ADMIN_EMAIL:kavinda@example.com}
+    super-admin-email: "kavinda@example.com"

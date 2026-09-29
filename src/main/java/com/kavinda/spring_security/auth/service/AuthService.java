@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,10 +27,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthService {
 
     private final UserRepository userRepository;
@@ -65,8 +67,10 @@ public class AuthService {
                 .email(email)
                 .passwordHash(passwordHash)
                 .enabled(true)
-                .roles(Set.of(userRole))
+                .roles(new HashSet<>())
                 .build();
+
+        user.addRole(userRole);
 
         if (isBootstrapSuperAdmin(email)) {
 
