@@ -1,5 +1,6 @@
 package com.kavinda.spring_security.role.service;
 
+import com.kavinda.spring_security.exceptions.types.ForbiddenOperationException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
 import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import com.kavinda.spring_security.permission.events.RolePermissionsChangedEvent;
@@ -30,6 +31,8 @@ public class RoleService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final ApplicationEventPublisher eventPublisher;
+
+    private static final Set<String> SYSTEM_ROLES = Set.of("USER", "ADMIN", "SUPER_ADMIN");
 
     /// Create a new role
     ///
@@ -90,6 +93,10 @@ public class RoleService {
         Set<Role> roles = new HashSet<>(roleRepository.findAllById(roleIds));
 
         for (Role role : roles) {
+            if ("SUPER_ADMIN".equals(role.getName())) {
+                throw new ForbiddenOperationException("SUPER_ADMIN cannot be assigned manually");
+            }
+
             user.addRole(role);
         }
 
@@ -106,11 +113,11 @@ public class RoleService {
 
         Role role = roleRepository
                 .findById(roleId)
-                .orElseThrow(
-                        () -> new ResourceNotFoundException(
-                                "Role not found with id: " + roleId
-                        )
-                );
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + roleId));
+
+        if (SYSTEM_ROLES.contains(role.getName())) {
+            throw new ForbiddenOperationException("System role cannot be deleted: " + role.getName());
+        }
 
         // NOTE: this is expensive operation, consider optimizing it if you have a large number of users
         List<AppUser> affectedUsers = userRepository.findAllByRoleId(roleId);
