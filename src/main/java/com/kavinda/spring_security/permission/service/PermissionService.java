@@ -8,6 +8,7 @@ import com.kavinda.spring_security.permission.dto.GetPermissionRequest;
 import com.kavinda.spring_security.permission.entity.Permission;
 import com.kavinda.spring_security.permission.events.RolePermissionsChangedEvent;
 import com.kavinda.spring_security.permission.repository.PermissionRepository;
+import com.kavinda.spring_security.permission.service.templates.IPermissionService;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.repository.RoleRepository;
 import com.kavinda.spring_security.user.repostitory.UserRepository;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PermissionService {
+public class PermissionService implements IPermissionService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -31,6 +32,7 @@ public class PermissionService {
     /// Creates a new permission.
     ///
     /// @param request The request object containing the name of the new permission.
+    @Override
     public void createNewPermission(CreateNewPermission request) {
 
         Optional<Permission> existingPermission = permissionRepository.findByName(request.name());
@@ -48,6 +50,7 @@ public class PermissionService {
     /// Retrieves all permissions.
     ///
     /// @return A set of GetAllPermissionsRequest objects representing all permissions.
+    @Override
     public Set<GetAllPermissionsRequest> getAllPermissions() {
         return permissionRepository.findAll()
                 .stream()
@@ -59,6 +62,7 @@ public class PermissionService {
     ///
     /// @param permissionId The UUID of the permission to retrieve.
     /// @return A GetPermissionRequest object representing the permission.
+    @Override
     public GetPermissionRequest getPermissionById(UUID permissionId) {
         Permission permission = permissionRepository.findById(permissionId)
                 .orElseThrow(
@@ -72,6 +76,7 @@ public class PermissionService {
     ///
     /// @param roleId        The UUID of the role to update.
     /// @param permissionIds A set of UUIDs representing the new permissions to associate with the role.
+    @Override
     @Transactional
     public void assignPermissionsToRole(UUID roleId, Set<UUID> permissionIds) {
         Role role = roleRepository.findById(roleId)
@@ -94,6 +99,7 @@ public class PermissionService {
     /// Deletes a permission by its ID.
     ///
     /// @param permissionId The UUID of the permission to delete.
+    @Override
     @Transactional
     public void deletePermission(UUID permissionId) {
 

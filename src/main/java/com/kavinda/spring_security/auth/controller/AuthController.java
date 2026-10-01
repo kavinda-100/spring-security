@@ -8,7 +8,6 @@ import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.auth.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -65,22 +64,6 @@ public class AuthController {
         );
 
         return ResponseEntity.ok(userDetails);
-    }
-
-    /// Get the current session details
-    ///
-    /// @param request        The HttpServletRequest object for the current request
-    /// @param authentication The Authentication object containing the details of the currently authenticated user
-    /// @return A ResponseEntity containing a map of session details and HTTP status code
-    @GetMapping("/session")
-    public ResponseEntity<Map<String, Object>> session(HttpServletRequest request, Authentication authentication) {
-        HttpSession session = request.getSession(false);
-
-        return ResponseEntity.ok(Map.of(
-                "sessionId", session.getId(),
-                "username", authentication.getName(),
-                "authorities", authentication.getAuthorities()
-        ));
     }
 
 

@@ -5,15 +5,18 @@ import com.kavinda.spring_security.auth.dto.LoginResponse;
 import com.kavinda.spring_security.auth.dto.RegisterRequest;
 import com.kavinda.spring_security.auth.dto.RegisterResponse;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
+import com.kavinda.spring_security.auth.service.templates.IAuthService;
 import com.kavinda.spring_security.config.properties.YMLSecurityProperties;
 import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.repository.RoleRepository;
+import com.kavinda.spring_security.session.constants.SessionAttributes;
 import com.kavinda.spring_security.user.entity.AppUser;
 import com.kavinda.spring_security.user.repostitory.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +30,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class AuthService {
+public class AuthService implements IAuthService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -46,6 +50,7 @@ public class AuthService {
     ///
     /// @param request The registration request containing user details.
     /// @return A RegisterResponse containing the registered user's information.
+    @Override
     @Transactional
     public RegisterResponse register(RegisterRequest request) {
         String email = request.email().trim().toLowerCase();
@@ -96,6 +101,7 @@ public class AuthService {
     /// @param request      The HttpServletRequest object for the current request.
     /// @param response     The HttpServletResponse object for the current response.
     /// @return A LoginResponse containing the authenticated user's information and authorities.
+    @Override
     public LoginResponse login(LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         Authentication unAuthenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.email(), loginRequest.password());
 
@@ -116,6 +122,15 @@ public class AuthService {
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
+
+        // set custom session attributes for the authenticated user
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            session.setAttribute(SessionAttributes.USER_AGENT, request.getHeader("User-Agent"));
+            session.setAttribute(SessionAttributes.IP_ADDRESS, request.getRemoteAddr());
+            session.setAttribute(SessionAttributes.LOGIN_TIME, Instant.now());
+        }
 
         return new LoginResponse(
                 user.getId(),
