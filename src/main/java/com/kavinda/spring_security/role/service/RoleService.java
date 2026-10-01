@@ -11,6 +11,7 @@ import com.kavinda.spring_security.role.dto.RoleResponse;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.events.UserAuthorizationChangedEvent;
 import com.kavinda.spring_security.role.repository.RoleRepository;
+import com.kavinda.spring_security.role.service.templates.IRoleService;
 import com.kavinda.spring_security.user.entity.AppUser;
 import com.kavinda.spring_security.user.repostitory.UserRepository;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class RoleService {
+public class RoleService implements IRoleService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -38,6 +39,7 @@ public class RoleService {
     ///
     /// @param request The CreateRoleRequest object containing the name of the role to be created.
     /// @return A RoleResponse object containing the ID and name of the newly created role.
+    @Override
     @Transactional
     public RoleResponse createRole(CreateRoleRequest request) {
         String roleName = request.name().trim().toUpperCase();
@@ -59,6 +61,7 @@ public class RoleService {
     /// Get all roles
     ///
     /// @return Set<GetAllRolesRequest>
+    @Override
     public Set<GetAllRolesRequest> getAllRoles() {
 
         return roleRepository.findAll()
@@ -71,6 +74,7 @@ public class RoleService {
     ///
     /// @param roleId The UUID of the role to be retrieved.
     /// @return GetRoleRequest
+    @Override
     public GetRoleRequest getRoleById(UUID roleId) {
         Role role = roleRepository.findById(roleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + roleId));
@@ -82,6 +86,7 @@ public class RoleService {
     ///
     /// @param userId  The UUID of the user whose roles are to be updated.
     /// @param roleIds The set of UUIDs representing the roles to be added to the user.
+    @Override
     @Transactional
     public void assignRolesToUser(UUID userId, Set<UUID> roleIds) {
 
@@ -108,6 +113,7 @@ public class RoleService {
     /// Delete a role by its ID
     ///
     /// @param roleId The UUID of the role to be deleted.
+    @Override
     @Transactional
     public void deleteRole(UUID roleId) {
 

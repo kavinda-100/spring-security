@@ -5,6 +5,7 @@ import com.kavinda.spring_security.auth.dto.LoginResponse;
 import com.kavinda.spring_security.auth.dto.RegisterRequest;
 import com.kavinda.spring_security.auth.dto.RegisterResponse;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
+import com.kavinda.spring_security.auth.service.templates.IAuthService;
 import com.kavinda.spring_security.config.properties.YMLSecurityProperties;
 import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
@@ -35,7 +36,7 @@ import java.util.HashSet;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class AuthService {
+public class AuthService implements IAuthService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -49,6 +50,7 @@ public class AuthService {
     ///
     /// @param request The registration request containing user details.
     /// @return A RegisterResponse containing the registered user's information.
+    @Override
     @Transactional
     public RegisterResponse register(RegisterRequest request) {
         String email = request.email().trim().toLowerCase();
@@ -99,6 +101,7 @@ public class AuthService {
     /// @param request      The HttpServletRequest object for the current request.
     /// @param response     The HttpServletResponse object for the current response.
     /// @return A LoginResponse containing the authenticated user's information and authorities.
+    @Override
     public LoginResponse login(LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         Authentication unAuthenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.email(), loginRequest.password());
 

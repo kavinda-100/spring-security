@@ -4,6 +4,7 @@ import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import com.kavinda.spring_security.session.constants.SessionAttributes;
 import com.kavinda.spring_security.session.dto.SessionResponse;
+import com.kavinda.spring_security.session.service.templates.IUserSessionService;
 import com.kavinda.spring_security.user.entity.AppUser;
 import com.kavinda.spring_security.user.repostitory.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class UserSessionService {
+public class UserSessionService implements IUserSessionService {
 
     private final UserRepository userRepository;
     private final FindByIndexNameSessionRepository<? extends Session> sessionRepository;
@@ -29,6 +30,7 @@ public class UserSessionService {
     /// Refreshes all sessions of a user with the latest authorities and details.
     ///
     /// @param userId The ID of the user whose sessions need to be refreshed.
+    @Override
     public void refreshUserSessions(UUID userId) {
 
         AppUser user = userRepository
@@ -45,6 +47,7 @@ public class UserSessionService {
     /// @param principalName    The principal name (usually the username or email) of the user whose sessions are to be retrieved.
     /// @param currentSessionId The ID of the current session, which can be used to identify and highlight the current session in the response.
     /// @return A list of SessionResponse objects representing the user's active sessions.
+    @Override
     public List<SessionResponse> getUserSessions(String principalName, String currentSessionId) {
         return getUserSessions(sessionRepository, principalName, currentSessionId);
     }
@@ -53,6 +56,7 @@ public class UserSessionService {
     ///
     /// @param principalName The principal name (usually the username or email) of the user whose session is to be revoked.
     /// @param sessionId     The ID of the session to be revoked.
+    @Override
     public void revokeSession(String principalName, String sessionId) {
         revokeSession(sessionRepository, principalName, sessionId);
     }
@@ -61,6 +65,7 @@ public class UserSessionService {
     ///
     /// @param principalName    The principal name (usually the username or email) of the user whose other sessions are to be revoked.
     /// @param currentSessionId The ID of the current session, which will be preserved while all other sessions are revoked.
+    @Override
     public void revokeOtherSessions(String principalName, String currentSessionId) {
         revokeOtherSessions(sessionRepository, principalName, currentSessionId);
     }
@@ -68,11 +73,12 @@ public class UserSessionService {
     /// Revokes all sessions for a user, effectively logging out the user from all devices or browsers.
     ///
     /// @param principalName The principal name (usually the username or email) of the user whose sessions are to be revoked.
+    @Override
     public void revokeAllSessions(String principalName) {
         revokeAllSessions(sessionRepository, principalName);
     }
 
-    // -------- private methods --------
+    // ---------------------------- private methods ------------------------------------------
 
     /// Helper method to revoke all sessions for a user based on the provided principal name.
     ///
