@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -23,6 +24,19 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
+
+    /// Retrieve the CSRF (Cross-Site Request Forgery) token for the current session
+    ///
+    /// This endpoint returns the CSRF token required for state-changing requests (POST, PUT, DELETE).
+    /// Clients should include this token in the `X-CSRF-TOKEN` header for subsequent requests
+    /// to protect against cross-site request forgery attacks.
+    ///
+    /// @param csrfToken The CsrfToken object resolved by Spring Security's CsrfTokenRequestAttributeHandler
+    /// @return The CsrfToken containing the token value and header name to be used in subsequent requests
+    @GetMapping("/csrf")
+    public CsrfToken csrf(CsrfToken csrfToken) {
+        return csrfToken;
+    }
 
     /// Register a new user
     ///
