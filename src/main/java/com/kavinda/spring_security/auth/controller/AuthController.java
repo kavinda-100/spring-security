@@ -1,9 +1,6 @@
 package com.kavinda.spring_security.auth.controller;
 
-import com.kavinda.spring_security.auth.dto.LoginRequest;
-import com.kavinda.spring_security.auth.dto.LoginResponse;
-import com.kavinda.spring_security.auth.dto.RegisterRequest;
-import com.kavinda.spring_security.auth.dto.RegisterResponse;
+import com.kavinda.spring_security.auth.dto.*;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.auth.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,8 +31,13 @@ public class AuthController {
     /// @param csrfToken The CsrfToken object resolved by Spring Security's CsrfTokenRequestAttributeHandler
     /// @return The CsrfToken containing the token value and header name to be used in subsequent requests
     @GetMapping("/csrf")
-    public CsrfToken csrf(CsrfToken csrfToken) {
-        return csrfToken;
+    public ResponseEntity<CsrfTokenResponse> csrf(CsrfToken csrfToken) {
+        var response = new CsrfTokenResponse(
+                csrfToken.getToken(),
+                csrfToken.getHeaderName(),
+                csrfToken.getParameterName()
+        );
+        return ResponseEntity.ok(response);
     }
 
     /// Register a new user
