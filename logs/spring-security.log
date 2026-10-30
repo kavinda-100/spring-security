@@ -1,0 +1,358 @@
+2026-10-30T10:55:01.194+05:30  INFO 33754 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 33754 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T10:55:01.196+05:30 DEBUG 33754 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T10:55:01.197+05:30  INFO 33754 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T10:55:01.695+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T10:55:01.696+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T10:55:01.773+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 3 JPA repository interfaces.
+2026-10-30T10:55:01.796+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T10:55:01.797+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T10:55:01.806+05:30  INFO 33754 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T10:55:01.806+05:30  INFO 33754 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T10:55:01.806+05:30  INFO 33754 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T10:55:01.806+05:30  INFO 33754 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-10-30T10:55:02.160+05:30  INFO 33754 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T10:55:02.167+05:30  INFO 33754 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T10:55:02.168+05:30  INFO 33754 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T10:55:02.190+05:30  INFO 33754 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 961 ms
+2026-10-30T10:55:02.296+05:30  INFO 33754 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T10:55:02.326+05:30  INFO 33754 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T10:55:02.548+05:30  INFO 33754 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T10:55:02.566+05:30  INFO 33754 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T10:55:02.689+05:30  INFO 33754 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33399052
+2026-10-30T10:55:02.690+05:30  INFO 33754 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T10:55:02.749+05:30  INFO 33754 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T10:55:03.236+05:30  INFO 33754 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T10:55:03.312+05:30  INFO 33754 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T10:55:03.352+05:30  INFO 33754 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T10:55:03.679+05:30  INFO 33754 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T10:55:04.450+05:30  INFO 33754 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T10:55:04.508+05:30  INFO 33754 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.602 seconds (process running for 3.834)
+2026-10-30T10:57:10.679+05:30  INFO 33754 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T10:57:10.679+05:30  INFO 33754 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T10:57:10.681+05:30  INFO 33754 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-30T11:01:25.077+05:30  INFO 33754 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:01:25.078+05:30  INFO 33754 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:01:25.091+05:30  INFO 33754 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:01:25.093+05:30  INFO 33754 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:01:25.096+05:30  INFO 33754 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-30T11:01:26.897+05:30  INFO 36274 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 36274 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T11:01:26.899+05:30 DEBUG 36274 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T11:01:26.899+05:30  INFO 36274 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T11:01:27.417+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:01:27.418+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T11:01:27.498+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75 ms. Found 3 JPA repository interfaces.
+2026-10-30T11:01:27.524+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:01:27.524+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T11:01:27.534+05:30  INFO 36274 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:01:27.534+05:30  INFO 36274 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:01:27.534+05:30  INFO 36274 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:01:27.534+05:30  INFO 36274 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-10-30T11:01:27.897+05:30  INFO 36274 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T11:01:27.906+05:30  INFO 36274 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T11:01:27.906+05:30  INFO 36274 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T11:01:27.933+05:30  INFO 36274 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1006 ms
+2026-10-30T11:01:28.047+05:30  INFO 36274 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T11:01:28.079+05:30  INFO 36274 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T11:01:28.285+05:30  INFO 36274 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T11:01:28.303+05:30  INFO 36274 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T11:01:28.387+05:30  INFO 36274 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@128a188a
+2026-10-30T11:01:28.388+05:30  INFO 36274 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T11:01:28.423+05:30  INFO 36274 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T11:01:28.905+05:30  INFO 36274 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T11:01:28.948+05:30  INFO 36274 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:01:28.993+05:30  INFO 36274 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T11:01:29.306+05:30  INFO 36274 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T11:01:30.068+05:30  INFO 36274 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T11:01:30.126+05:30  INFO 36274 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.549 seconds (process running for 3.8)
+2026-10-30T11:01:40.665+05:30  INFO 36274 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T11:01:40.665+05:30  INFO 36274 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T11:01:40.666+05:30  INFO 36274 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-30T11:03:52.969+05:30  INFO 36274 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:03:52.971+05:30  INFO 36274 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:03:52.983+05:30  INFO 36274 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:03:52.984+05:30  INFO 36274 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:03:52.985+05:30  INFO 36274 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-30T11:11:15.500+05:30  INFO 40490 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 40490 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T11:11:15.502+05:30 DEBUG 40490 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T11:11:15.503+05:30  INFO 40490 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T11:11:16.022+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:11:16.023+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T11:11:16.091+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 3 JPA repository interfaces.
+2026-10-30T11:11:16.121+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:11:16.121+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T11:11:16.131+05:30  INFO 40490 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:11:16.131+05:30  INFO 40490 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:11:16.132+05:30  INFO 40490 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:11:16.132+05:30  INFO 40490 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-10-30T11:11:16.501+05:30  INFO 40490 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T11:11:16.508+05:30  INFO 40490 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T11:11:16.509+05:30  INFO 40490 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T11:11:16.530+05:30  INFO 40490 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 990 ms
+2026-10-30T11:11:16.626+05:30  INFO 40490 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T11:11:16.657+05:30  INFO 40490 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T11:11:16.864+05:30  INFO 40490 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T11:11:16.881+05:30  INFO 40490 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T11:11:16.977+05:30  INFO 40490 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@98712fa
+2026-10-30T11:11:16.978+05:30  INFO 40490 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T11:11:17.016+05:30  INFO 40490 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T11:11:17.502+05:30  INFO 40490 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T11:11:17.545+05:30  INFO 40490 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:11:17.598+05:30  INFO 40490 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T11:11:17.909+05:30  INFO 40490 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T11:11:18.674+05:30  INFO 40490 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T11:11:18.730+05:30  INFO 40490 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.57 seconds (process running for 3.856)
+2026-10-30T11:11:23.196+05:30  INFO 40490 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T11:11:23.196+05:30  INFO 40490 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T11:11:23.198+05:30  INFO 40490 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-30T11:14:57.928+05:30  INFO 40490 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:14:57.930+05:30  INFO 40490 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:14:57.939+05:30  INFO 40490 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:14:57.940+05:30  INFO 40490 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:14:57.942+05:30  INFO 40490 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-30T11:16:39.344+05:30  INFO 42487 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 42487 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T11:16:39.346+05:30 DEBUG 42487 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T11:16:39.346+05:30  INFO 42487 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T11:16:39.756+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:16:39.757+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T11:16:39.823+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 3 JPA repository interfaces.
+2026-10-30T11:16:39.845+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:16:39.845+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T11:16:39.853+05:30  INFO 42487 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:16:39.854+05:30  INFO 42487 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:16:39.854+05:30  INFO 42487 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:16:39.854+05:30  INFO 42487 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-10-30T11:16:40.186+05:30  INFO 42487 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T11:16:40.192+05:30  INFO 42487 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T11:16:40.193+05:30  INFO 42487 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T11:16:40.211+05:30  INFO 42487 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 840 ms
+2026-10-30T11:16:40.306+05:30  INFO 42487 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T11:16:40.326+05:30  INFO 42487 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T11:16:40.500+05:30  INFO 42487 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T11:16:40.513+05:30  INFO 42487 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T11:16:40.598+05:30  INFO 42487 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@128a188a
+2026-10-30T11:16:40.599+05:30  INFO 42487 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T11:16:40.632+05:30  INFO 42487 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T11:16:41.091+05:30  INFO 42487 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T11:16:41.145+05:30  INFO 42487 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:16:41.187+05:30  INFO 42487 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T11:16:41.483+05:30  INFO 42487 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T11:16:41.803+05:30 DEBUG 42487 --- [spring-security] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-10-30T11:16:42.227+05:30  INFO 42487 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T11:16:42.286+05:30  INFO 42487 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.213 seconds (process running for 3.408)
+2026-10-30T11:16:47.802+05:30  INFO 42487 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T11:16:47.802+05:30  INFO 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T11:16:47.803+05:30  INFO 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-30T11:16:47.809+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/csrf
+2026-10-30T11:16:47.812+05:30 TRACE 42487 --- [spring-security] [http-nio-8080-exec-2] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:16:47.812+05:30 TRACE 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:16:47.826+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:16:47.827+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/csrf
+2026-10-30T11:17:00.843+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/auth/login
+2026-10-30T11:17:00.843+05:30 TRACE 42487 --- [spring-security] [http-nio-8080-exec-3] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:17:00.844+05:30 TRACE 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [X-XSRF-TOKEN] request header
+2026-10-30T11:17:00.844+05:30 TRACE 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [_csrf] request parameter
+2026-10-30T11:17:00.844+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.csrf.CsrfFilter         : Invalid CSRF token found for http://localhost:8080/api/v1/auth/login
+2026-10-30T11:17:00.844+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2026-10-30T11:17:00.847+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2026-10-30T11:17:00.849+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:17:00.851+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2026-10-30T11:17:00.852+05:30 DEBUG 42487 --- [spring-security] [http-nio-8080-exec-3] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2026-10-30T11:19:28.191+05:30  INFO 42487 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:19:28.193+05:30  INFO 42487 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:19:28.202+05:30  INFO 42487 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:19:28.204+05:30  INFO 42487 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:19:28.205+05:30  INFO 42487 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-30T11:19:29.649+05:30  INFO 43560 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 43560 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T11:19:29.650+05:30 DEBUG 43560 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T11:19:29.651+05:30  INFO 43560 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T11:19:30.100+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:19:30.101+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T11:19:30.169+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 3 JPA repository interfaces.
+2026-10-30T11:19:30.189+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:19:30.190+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T11:19:30.198+05:30  INFO 43560 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:19:30.198+05:30  INFO 43560 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:19:30.198+05:30  INFO 43560 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:19:30.198+05:30  INFO 43560 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-10-30T11:19:30.534+05:30  INFO 43560 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T11:19:30.543+05:30  INFO 43560 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T11:19:30.543+05:30  INFO 43560 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T11:19:30.569+05:30  INFO 43560 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 889 ms
+2026-10-30T11:19:30.676+05:30  INFO 43560 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T11:19:30.698+05:30  INFO 43560 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T11:19:30.869+05:30  INFO 43560 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T11:19:30.884+05:30  INFO 43560 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T11:19:30.960+05:30  INFO 43560 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@128a188a
+2026-10-30T11:19:30.960+05:30  INFO 43560 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T11:19:30.992+05:30  INFO 43560 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T11:19:31.426+05:30  INFO 43560 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T11:19:31.469+05:30  INFO 43560 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:19:31.510+05:30  INFO 43560 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T11:19:31.803+05:30  INFO 43560 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T11:19:32.126+05:30 DEBUG 43560 --- [spring-security] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-10-30T11:19:32.531+05:30  INFO 43560 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T11:19:32.588+05:30  INFO 43560 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.202 seconds (process running for 3.402)
+2026-10-30T11:19:44.620+05:30  INFO 43560 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T11:19:44.620+05:30  INFO 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T11:19:44.621+05:30  INFO 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-30T11:19:44.626+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/csrf
+2026-10-30T11:19:44.629+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-2] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:19:44.629+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:19:44.642+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:19:44.643+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/csrf
+2026-10-30T11:25:46.422+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/csrf
+2026-10-30T11:25:46.422+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-5] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:25:46.422+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-5] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:25:46.424+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:25:46.425+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/csrf
+2026-10-30T11:25:54.628+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/auth/login
+2026-10-30T11:25:54.628+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-6] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:25:54.628+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [X-XSRF-TOKEN] request header
+2026-10-30T11:25:54.628+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [_csrf] request parameter
+2026-10-30T11:25:54.629+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.security.web.csrf.CsrfFilter         : Invalid CSRF token found for http://localhost:8080/api/v1/auth/login
+2026-10-30T11:25:54.629+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2026-10-30T11:25:54.636+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /error
+2026-10-30T11:25:54.638+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:25:54.640+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2026-10-30T11:25:54.640+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-6] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2026-10-30T11:28:55.159+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/csrf
+2026-10-30T11:28:55.159+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-9] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:28:55.159+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-9] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:28:55.162+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:28:55.162+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/csrf
+2026-10-30T11:29:12.858+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/auth/login
+2026-10-30T11:29:12.858+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-10] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:29:12.859+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [X-XSRF-TOKEN] request header
+2026-10-30T11:29:12.859+05:30 TRACE 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.web.csrf.CsrfTokenRequestHandler   : Did not find a CSRF token in the [_csrf] request parameter
+2026-10-30T11:29:12.859+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.security.web.csrf.CsrfFilter         : Invalid CSRF token found for http://localhost:8080/api/v1/auth/login
+2026-10-30T11:29:12.859+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+2026-10-30T11:29:12.859+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /error
+2026-10-30T11:29:12.862+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:29:12.863+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2026-10-30T11:29:12.863+05:30 DEBUG 43560 --- [spring-security] [http-nio-8080-exec-10] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2026-10-30T11:35:51.156+05:30  INFO 43560 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:35:51.158+05:30  INFO 43560 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:35:51.169+05:30  INFO 43560 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:35:51.171+05:30  INFO 43560 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:35:51.172+05:30  INFO 43560 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-30T11:35:52.805+05:30  INFO 49769 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Starting SpringSecurityApplication using Java 25.0.2 with PID 49769 (/home/kavinda/Documents/code/java/spring-security/target/classes started by kavinda in /home/kavinda/Documents/code/java/spring-security)
+2026-10-30T11:35:52.807+05:30 DEBUG 49769 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-30T11:35:52.807+05:30  INFO 49769 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T11:35:53.264+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:35:53.265+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T11:35:53.343+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 3 JPA repository interfaces.
+2026-10-30T11:35:53.369+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T11:35:53.369+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T11:35:53.377+05:30  INFO 49769 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.permission.repository.PermissionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:35:53.378+05:30  INFO 49769 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.role.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:35:53.378+05:30  INFO 49769 --- [spring-security] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.kavinda.spring_security.user.repostitory.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T11:35:53.378+05:30  INFO 49769 --- [spring-security] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-10-30T11:35:53.735+05:30  INFO 49769 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-30T11:35:53.744+05:30  INFO 49769 --- [spring-security] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-30T11:35:53.745+05:30  INFO 49769 --- [spring-security] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-30T11:35:53.769+05:30  INFO 49769 --- [spring-security] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 932 ms
+2026-10-30T11:35:53.874+05:30  INFO 49769 --- [spring-security] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-30T11:35:53.900+05:30  INFO 49769 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-30T11:35:54.093+05:30  INFO 49769 --- [spring-security] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T11:35:54.107+05:30  INFO 49769 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T11:35:54.185+05:30  INFO 49769 --- [spring-security] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@37c74e4e
+2026-10-30T11:35:54.186+05:30  INFO 49769 --- [spring-security] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T11:35:54.221+05:30  INFO 49769 --- [spring-security] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/spring_security]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.11
+	Default catalog/schema: spring_security/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T11:35:54.698+05:30  INFO 49769 --- [spring-security] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T11:35:54.746+05:30  INFO 49769 --- [spring-security] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:35:54.796+05:30  INFO 49769 --- [spring-security] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-30T11:35:55.115+05:30  INFO 49769 --- [spring-security] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-10-30T11:35:55.467+05:30 DEBUG 49769 --- [spring-security] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-10-30T11:35:55.870+05:30  INFO 49769 --- [spring-security] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-30T11:35:55.924+05:30  INFO 49769 --- [spring-security] [main] c.k.s.SpringSecurityApplication          : Started SpringSecurityApplication in 3.41 seconds (process running for 3.633)
+2026-10-30T11:36:02.884+05:30  INFO 49769 --- [spring-security] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-30T11:36:02.884+05:30  INFO 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-30T11:36:02.885+05:30  INFO 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-30T11:36:02.891+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/csrf
+2026-10-30T11:36:02.896+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-2] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:36:02.896+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:36:02.898+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:36:02.898+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/csrf
+2026-10-30T11:36:25.697+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/auth/login
+2026-10-30T11:36:25.698+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-3] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:36:25.698+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.csrf.CsrfFilter         : Found a CSRF token in the request
+2026-10-30T11:36:25.698+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-10-30T11:36:25.698+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/auth/login
+2026-10-30T11:36:25.870+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-3] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2026-10-30T11:36:25.872+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-3] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=com.kavinda.spring_security.auth.security.CustomUserDetails@79316da4, Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[permission:create, user:delete, role:read, user:update, role:assign, ROLE_SUPER_ADMIN, permission:read, profile:read, user:create, permission:delete, role:create, permission:assign, ROLE_USER, profile:delete, user:read, role:delete, profile:update, FactorGrantedAuthority [authority=FACTOR_PASSWORD, issuedAt=2026-10-30T06:06:25.870580622Z]]]] to HttpSession [org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper$HttpSessionWrapper@6fe2a05f]
+2026-10-30T11:36:42.192+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/me
+2026-10-30T11:36:42.192+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-4] s.s.w.c.CsrfTokenRequestAttributeHandler : Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2026-10-30T11:36:42.192+05:30 TRACE 49769 --- [spring-security] [http-nio-8080-exec-4] o.s.security.web.csrf.CsrfFilter         : Did not protect against CSRF since request did not match IsNotHttpMethod [TRACE, HEAD, GET, OPTIONS]
+2026-10-30T11:36:42.197+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-4] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=com.kavinda.spring_security.auth.security.CustomUserDetails@57d50b09, Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[permission:create, user:delete, role:read, user:update, role:assign, ROLE_SUPER_ADMIN, permission:read, profile:read, user:create, permission:delete, role:create, permission:assign, ROLE_USER, profile:delete, user:read, role:delete, profile:update, FactorGrantedAuthority [authority=FACTOR_PASSWORD, issuedAt=2026-10-30T06:06:25.870580622Z]]]]
+2026-10-30T11:36:42.197+05:30 DEBUG 49769 --- [spring-security] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/me
+2026-10-30T11:39:30.545+05:30  INFO 49769 --- [spring-security] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-30T11:39:30.546+05:30  INFO 49769 --- [spring-security] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-30T11:39:30.554+05:30  INFO 49769 --- [spring-security] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T11:39:30.555+05:30  INFO 49769 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-30T11:39:30.556+05:30  INFO 49769 --- [spring-security] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

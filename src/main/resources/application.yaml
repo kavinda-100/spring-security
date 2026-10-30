@@ -50,9 +50,9 @@ server:
     session:
       timeout: ${SESSION_TIMEOUT:30m}
       cookie:
-        http-only: ${COOKIE_HTTP_ONLY:true}
-        secure: ${COOKIE_SECURE:true}
-        same-site: ${COOKIE_SAME_SITE:Lax}
+        http-only: ${COOKIE_HTTP_ONLY}
+        secure: ${COOKIE_SECURE}
+        same-site: ${COOKIE_SAME_SITE}
         path: /
 
 app:
@@ -65,6 +65,8 @@ logging:
     com.kavinda: DEBUG
     org.springframework.web: INFO
     org.springframework.security.oauth2: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.web.csrf: TRACE
 
   file:
     name: ${LOG_FILE:logs/spring-security.log}
