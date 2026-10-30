@@ -1,14 +1,14 @@
 package com.kavinda.spring_security.auth.service;
 
-import com.kavinda.spring_security.auth.dto.LoginRequest;
-import com.kavinda.spring_security.auth.dto.LoginResponse;
-import com.kavinda.spring_security.auth.dto.RegisterRequest;
-import com.kavinda.spring_security.auth.dto.RegisterResponse;
+import com.kavinda.spring_security.auth.dto.*;
+import com.kavinda.spring_security.auth.events.UserCredentialsChangedEvent;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.auth.service.templates.IAuthService;
 import com.kavinda.spring_security.config.properties.YMLSecurityProperties;
 import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
+import com.kavinda.spring_security.exceptions.types.InvalidCredentialsException;
 import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
+import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
 import com.kavinda.spring_security.role.entity.Role;
 import com.kavinda.spring_security.role.repository.RoleRepository;
 import com.kavinda.spring_security.session.constants.SessionAttributes;
@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -32,6 +33,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +46,7 @@ public class AuthService implements IAuthService {
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository;
     private final YMLSecurityProperties ymlSecurityProperties;
+    private final ApplicationEventPublisher eventPublisher;
 
 
     /// Registers a new user with the provided registration request.
@@ -137,6 +140,30 @@ public class AuthService implements IAuthService {
                 user.getUsername(),
                 authorities
         );
+    }
+
+    /// Changes the password for the user with the specified ID.
+    ///
+    /// @param userId  The ID of the user whose password is to be changed.
+    /// @param request The request containing the current and new passwords.
+    @Override
+    @Transactional
+    public void changePassword(UUID userId, ChangePasswordRequest request) {
+        AppUser user = userRepository
+                .findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        if (!passwordEncoder.matches(request.currentPassword(), user.getPasswordHash())) {
+            throw new InvalidCredentialsException("Current password is incorrect");
+        }
+
+        if (passwordEncoder.matches(request.newPassword(), user.getPasswordHash())) {
+            throw new ResourceConflictException("New password must be different from current password");
+        }
+
+        user.setPasswordHash(passwordEncoder.encode(request.newPassword()));
+
+        eventPublisher.publishEvent(new UserCredentialsChangedEvent(user.getEmail()));
     }
 
     // --------------- helper methods ---------------

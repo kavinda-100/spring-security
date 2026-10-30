@@ -82,5 +82,19 @@ public class AuthController {
         return ResponseEntity.ok(userDetails);
     }
 
+    /// Change the password of the currently authenticated user
+    ///
+    /// @param request        The ChangePasswordRequest containing the current and new password
+    /// @param authentication The Authentication object containing the details of the currently authenticated user
+    /// @return A ResponseEntity containing a map of the response and HTTP status code
+    @PatchMapping("/change-password")
+    public ResponseEntity<Map<String, Object>> changePassword(@Valid @RequestBody ChangePasswordRequest request, Authentication authentication) {
+        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+
+        authService.changePassword(user.getId(), request);
+
+        return new ResponseEntity<>(Map.of("message", "Password changed successfully"), HttpStatus.NO_CONTENT);
+    }
+
 
 }

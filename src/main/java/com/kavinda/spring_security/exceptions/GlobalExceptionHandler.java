@@ -1,9 +1,6 @@
 package com.kavinda.spring_security.exceptions;
 
-import com.kavinda.spring_security.exceptions.types.ForbiddenOperationException;
-import com.kavinda.spring_security.exceptions.types.InternalServerErrorException;
-import com.kavinda.spring_security.exceptions.types.ResourceConflictException;
-import com.kavinda.spring_security.exceptions.types.ResourceNotFoundException;
+import com.kavinda.spring_security.exceptions.types.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -51,6 +48,19 @@ public class GlobalExceptionHandler {
         );
 
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
+    // Handles InvalidCredentialsException
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCredentialsException(InvalidCredentialsException exception) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                exception.getMessage(),
+                Instant.now()
+        );
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     // handler for Internal Server Error Exception
