@@ -3,17 +3,17 @@ spring:
     name: spring-security
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring_security
-    username: postgres
-    password: postgres
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spring_security}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
 
     open-in-view: false
-    show-sql: true
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
 
     properties:
       hibernate:
@@ -23,11 +23,11 @@ spring:
 
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 
   session:
-    timeout: 30m
+    timeout: ${SESSION_TIMEOUT:30m}
     data:
       redis:
         repository-type: indexed
@@ -38,7 +38,35 @@ spring:
     init:
       mode: never
 
+server:
+  port: ${SERVER_PORT:8080}
+
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+
+  servlet:
+    session:
+      timeout: ${SESSION_TIMEOUT:30m}
+      cookie:
+        http-only: ${COOKIE_HTTP_ONLY}
+        secure: ${COOKIE_SECURE}
+        same-site: ${COOKIE_SAME_SITE}
+        path: /
 
 app:
   security:
-    super-admin-email: "kavinda@example.com"
+    super-admin-email: ${SUPER_ADMIN_EMAIL:kavinda@example.com}
+
+logging:
+  level:
+    root: INFO
+    com.kavinda: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.web.csrf: TRACE
+
+  file:
+    name: ${LOG_FILE:logs/spring-security.log}

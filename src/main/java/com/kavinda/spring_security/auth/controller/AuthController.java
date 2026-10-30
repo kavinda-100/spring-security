@@ -1,9 +1,6 @@
 package com.kavinda.spring_security.auth.controller;
 
-import com.kavinda.spring_security.auth.dto.LoginRequest;
-import com.kavinda.spring_security.auth.dto.LoginResponse;
-import com.kavinda.spring_security.auth.dto.RegisterRequest;
-import com.kavinda.spring_security.auth.dto.RegisterResponse;
+import com.kavinda.spring_security.auth.dto.*;
 import com.kavinda.spring_security.auth.security.CustomUserDetails;
 import com.kavinda.spring_security.auth.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -23,6 +21,24 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
+
+    /// Retrieve the CSRF (Cross-Site Request Forgery) token for the current session
+    ///
+    /// This endpoint returns the CSRF token required for state-changing requests (POST, PUT, DELETE).
+    /// Clients should include this token in the `X-CSRF-TOKEN` header for subsequent requests
+    /// to protect against cross-site request forgery attacks.
+    ///
+    /// @param csrfToken The CsrfToken object resolved by Spring Security's CsrfTokenRequestAttributeHandler
+    /// @return The CsrfToken containing the token value and header name to be used in subsequent requests
+    @GetMapping("/csrf")
+    public ResponseEntity<CsrfTokenResponse> csrf(CsrfToken csrfToken) {
+        var response = new CsrfTokenResponse(
+                csrfToken.getToken(),
+                csrfToken.getHeaderName(),
+                csrfToken.getParameterName()
+        );
+        return ResponseEntity.ok(response);
+    }
 
     /// Register a new user
     ///
